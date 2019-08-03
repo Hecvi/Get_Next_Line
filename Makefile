@@ -6,7 +6,7 @@
 #    By: klaurine <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/04 19:40:59 by klaurine          #+#    #+#              #
-#    Updated: 2019/06/28 17:22:27 by klaurine         ###   ########.fr        #
+#    Updated: 2019/08/03 13:56:18 by klaurine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,8 @@ all:
 	clang -o test_gnl main.o $(OBJECTS) -I libft/includes -L libft/ -lft
 
 clean:
-	rm -rf *.o
-	rm -rf test_gnl
+	rm -f *.o
+	rm -f test_gnl
 
 fclean: clean
 	make -C libft/ fclean
