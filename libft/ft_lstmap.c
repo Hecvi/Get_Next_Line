@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/14 19:30:50 by klaurine          #+#    #+#             */
-/*   Updated: 2019/05/16 20:20:59 by klaurine         ###   ########.fr       */
+/*   Created: 2019/08/26 16:17:02 by klaurine          #+#    #+#             */
+/*   Updated: 2019/08/31 17:38:48 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	size_t					i;
-	unsigned char			*dest;
-	const unsigned char		*source;
+	t_list *list;
+	t_list *buffer;
 
-	i = 0;
-	dest = (unsigned char *)dst;
-	source = (const unsigned char *)src;
-	if (dest == NULL && source == NULL)
+	if (!lst || !f)
 		return (NULL);
-	else if (source >= dest || dest >= (source + len))
+	if (!(list = f(lst)))
+		return (NULL);
+	buffer = list;
+	while (lst->next)
 	{
-		while (i < len)
+		lst = lst->next;
+		if (!(buffer->next = f(lst)))
 		{
-			dest[i] = source[i];
-			i++;
+			while (list)
+			{
+				buffer = list->next;
+				free(list);
+				list = buffer;
+			}
+			return (NULL);
 		}
+		buffer = buffer->next;
 	}
-	else
-		while (i < len)
-		{
-			dest[len - 1] = source[len - 1];
-			len--;
-		}
-	return (dst);
+	return (list);
 }

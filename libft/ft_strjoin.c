@@ -6,7 +6,7 @@
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/24 21:25:41 by klaurine          #+#    #+#             */
-/*   Updated: 2019/04/29 16:54:16 by klaurine         ###   ########.fr       */
+/*   Updated: 2019/06/26 19:20:17 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		i;
-	int		j;
 	char	*s3;
 
-	i = 0;
-	j = 0;
-	if (s1 == NULL || s2 == NULL)
+	if (!s1 && !s2)
 		return (NULL);
-	s3 = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
-	if (s3 == NULL)
-		return (NULL);
-	while (s1[i])
+	if (!s1)
 	{
-		s3[i] = s1[i];
-		i++;
+		if (!(s3 = ft_strnew(ft_strlen(s2))))
+			return (NULL);
+		ft_strcpy(s3, s2);
 	}
-	while (s2[j])
+	else if (!s2)
 	{
-		s3[i] = s2[j];
-		i++;
-		j++;
+		if (!(s3 = ft_strnew(ft_strlen(s1))))
+			return (NULL);
+		ft_strcpy(s3, s1);
 	}
-	s3[i] = '\0';
+	else
+	{
+		if (!(s3 = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
+			return (NULL);
+		ft_strcpy(s3, s1);
+		ft_strcat(s3, s2);
+	}
 	return (s3);
 }

@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_swap_bits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/13 20:26:33 by klaurine          #+#    #+#             */
-/*   Updated: 2019/08/21 21:03:53 by klaurine         ###   ########.fr       */
+/*   Created: 2019/03/20 19:41:50 by klaurine          #+#    #+#             */
+/*   Updated: 2019/08/31 18:01:52 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+unsigned char	ft_swap_bits(unsigned char octet)
 {
-	size_t					i;
-	unsigned char			*dest;
-	const unsigned char		*source;
-
-	i = 0;
-	dest = (unsigned char *)dst;
-	source = (const unsigned char *)src;
-	if (dest == NULL && source == NULL)
-		return (NULL);
-	while (i < n)
-	{
-		dest[i] = source[i];
-		i++;
-	}
-	return (dst);
+	return ((octet >> 4) | (octet << 4));
 }

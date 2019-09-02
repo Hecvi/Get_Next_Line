@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_print_bits.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klaurine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/13 20:26:33 by klaurine          #+#    #+#             */
-/*   Updated: 2019/08/21 21:03:53 by klaurine         ###   ########.fr       */
+/*   Created: 2019/05/03 18:15:17 by klaurine          #+#    #+#             */
+/*   Updated: 2019/08/31 18:03:49 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_print_bits(unsigned char octet)
 {
-	size_t					i;
-	unsigned char			*dest;
-	const unsigned char		*source;
+	int i;
+	int a;
 
-	i = 0;
-	dest = (unsigned char *)dst;
-	source = (const unsigned char *)src;
-	if (dest == NULL && source == NULL)
-		return (NULL);
-	while (i < n)
+	i = 7;
+	a = 0;
+	while (i >= 0)
 	{
-		dest[i] = source[i];
-		i++;
+		a = (octet >> i) & 1;
+		a = a + '0';
+		write(1, &a, 1);
+		i--;
 	}
-	return (dst);
 }
