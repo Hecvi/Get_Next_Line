@@ -6,14 +6,12 @@
 /*   By: klaurine <klaurine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/13 20:10:30 by klaurine          #+#    #+#             */
-/*   Updated: 2019/07/24 16:21:42 by klaurine         ###   ########.fr       */
+/*   Updated: 2020/02/09 13:45:33 by klaurine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
-
-int		get_next_line(const int fd, char **line);
 
 int		main(int argc, char **argv)
 {
