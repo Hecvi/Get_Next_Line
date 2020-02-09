@@ -6,7 +6,7 @@
 #    By: klaurine <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/04 19:40:59 by klaurine          #+#    #+#              #
-#    Updated: 2019/08/03 13:56:18 by klaurine         ###   ########.fr        #
+#    Updated: 2020/02/02 14:46:54 by klaurine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ FLAGS = -Wall -Wextra -Werror
 all:
 	make -C libft/ fclean && make -C libft/
 	clang $(FLAGS) -I libft/includes -o $(OBJECTS) -c $(SOURCE)
-	clang $(FLAGS) -I libft/includes -o main.o -c main.c
+	clang $(FLAGS) -I libft/includes -o main.o -c main_second.c
 	clang -o test_gnl main.o $(OBJECTS) -I libft/includes -L libft/ -lft
 
 clean:
